@@ -6,3 +6,5 @@ env
 .env.bak
 .env.example
 composer.phar
+.idea
+_ide_helper.php
