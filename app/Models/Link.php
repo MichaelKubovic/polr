@@ -27,4 +27,13 @@ class Link extends Model {
             ->where('long_url_hash', $crc32_hash)
             ->where('long_url', $long_url);
     }
+
+    /**
+     * @param int $statusCode
+     */
+    public function setHealth($statusCode)
+    {
+        $this->status_code = $statusCode;
+        $this->last_checked_at = new \DateTime();
+    }
 }
