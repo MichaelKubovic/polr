@@ -9,17 +9,20 @@ use Illuminate\Console\Command;
 
 class HealthCheckCommand extends Command
 {
-    protected $signature = 'polr:health-check';
+    protected $signature = 'polr:health-check {--force}';
 
     protected $description = 'Crawls all links and checks http status codes';
 
     public function handle()
     {
-        $links = Link::select('id', 'long_url')
-            ->where('is_disabled', 0)
-            ->whereNull('last_checked_at')
-            ->orWhere('last_checked_at', '<', date('Y-m-d', strtotime('-30 days'))) // @todo make configurable
-            ->get();
+        $query = Link::select('id', 'long_url')->where('is_disabled', 0);
+        if (!$this->option('force')) {
+            $query
+                ->whereNull('last_checked_at')
+                ->orWhere('last_checked_at', '<', date('Y-m-d', strtotime('-1 day')))
+            ;
+        }
+        $links = $query->get();
 
         $this->line('Links to check: '.$links->count());
         $client = new Client();
