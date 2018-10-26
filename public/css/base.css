@@ -49,3 +49,6 @@ body {
         padding-top: 1em;
     }
 }
+.navbar {
+    background: url(../img/grain.png) center center #131921;
+}

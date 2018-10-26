@@ -9,11 +9,13 @@
 
         <!-- Output sign in/sign out buttons appropriately -->
         <div class="navbar-header">
-            <a class="navbar-brand" href="{{ route('index') }}">{{env('APP_NAME')}}</a>
+            <a class="navbar-brand" href="{{ route('index') }}">
+                <img src="/img/wslogo@2x.png" alt="{{env('APP_NAME')}}" width="180">
+            </a>
         </div>
 
         <ul id="navbar" class="nav navbar-collapse collapse navbar-nav" id="nbc">
-		    <li><a href="{{ route('about') }}">About</a></li>
+		    {{--<li><a href="{{ route('about') }}">About</a></li>--}}
 
             @if (empty(session('username')))
                 <li class="visible-xs"><a href="{{ route('login') }}">Sign In</a></li>

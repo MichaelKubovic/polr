@@ -27,3 +27,9 @@
 .visibility-toggler {
     margin-bottom: 2em;
 }
+.btn#shorten {
+    background: #e5343e;
+}
+.btn#show-link-options {
+    background-color: #3b4a59;
+}
